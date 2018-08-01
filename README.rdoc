@@ -1,1 +1,17 @@
 This is the repository for the first alpha-blog app of the Complete Ruby on Rails Developer Course.
+
+
+*** IMPORTANT HEROKU DEPLOYMENT NOTICE ***
+
+The pg gem in the gemfile had a bug in it ca. 2017/2018 era make the following fix to the gemfile in your app 
+Under the following section - note the course instructions and then change to the fix below it.
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+group :production do
+  gem 'pg', '~> 0.11'
+  gem 'rails_12factor'
+end
