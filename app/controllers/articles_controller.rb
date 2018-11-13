@@ -4,7 +4,10 @@ class ArticlesController < ApplicationController
   def index
     #In this case, since I'm getting a listing of ALL articles in the database, I'll call this instance variable plural @articles
     #to indicate a list rather than one article
-    @articles = Article.all
+    #bootstrap paginate gem gives the ability to break whole database listing of articles into paginated sections
+    #Take note of the pagination statement below, the params (page: params[:page]) defaults to like 20 or 30 but you can customize
+    #   the number of items per page by specifying ..., per_page: 5) to limit it for small databases or for no data in your database
+    @articles = Article.paginate(page: params[:page], per_page: 5)
   end
   
   def new
